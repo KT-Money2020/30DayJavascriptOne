@@ -58,7 +58,18 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+window.addEventListener('keydown',function(e){
+   //Creating my own audio tag that plays a sound when called upon. It has its own custom data-key. If the data key is the same as the audio tag from above then it plays a sound
+   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
+   //Creating my own key that will be the same as the one created on the screen if the user enters the correct keys. The purpose of it is to connect the key tag to the audio tag and plays a sound
+   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+   //If there is no audio entered in from the user that is the same to the one in the html document then no audio is played it stops the function from running
+   if (!audio) return;
+   //It adds a class called "playing" to the key entered by the user, and if the key matches a key from the document then it would add that playing command into the tag
+   key.classList.add('playing'); 
+   //The audio starts playing
+   audio.play();    
+});
 </script>
 
 
