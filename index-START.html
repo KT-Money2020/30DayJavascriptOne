@@ -70,6 +70,20 @@ window.addEventListener('keydown',function(e){
    //The audio starts playing
    audio.play();    
 });
+
+function removeTransition(e){
+    //Exit the function if the tag did not transform
+    if(e.propertyName !== 'transform') return;
+    //Remove the classlist that was added to the key tag so that the audio would stop playing
+    this.classList.remove("playing");
+}    
+//Creates a a variable that holds all the items from the NodeList   
+const keys = document.querySelectorAll('.key');  
+//For every item within the Nodelist, if their transition has come to an end then immediately activate the "removeTransition" function and remove the class from their Classlist to remove the border animation
+keys.forEach(key=>key.addEventListener('transitionend',removeTransition));
+    
+    
+    
 </script>
 
 
