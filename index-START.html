@@ -58,7 +58,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-window.addEventListener('keydown',function(e){
+function playSound(e){
    //Creating my own audio tag that plays a sound when called upon. It has its own custom data-key. If the data key is the same as the audio tag from above then it plays a sound
    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
    //Creating my own key that will be the same as the one created on the screen if the user enters the correct keys. The purpose of it is to connect the key tag to the audio tag and plays a sound
@@ -69,7 +69,7 @@ window.addEventListener('keydown',function(e){
    key.classList.add('playing'); 
    //The audio starts playing
    audio.play();    
-});
+};
 
 function removeTransition(e){
     //Exit the function if the tag did not transform
@@ -82,7 +82,7 @@ const keys = document.querySelectorAll('.key');
 //For every item within the Nodelist, if their transition has come to an end then immediately activate the "removeTransition" function and remove the class from their Classlist to remove the border animation
 keys.forEach(key=>key.addEventListener('transitionend',removeTransition));
     
-    
+window.addEventListener('keydown', playSound);
     
 </script>
 
